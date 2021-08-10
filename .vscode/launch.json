@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "gRPC Demo",
+            "name": "Grpc Demo Server",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net5.0/GrpcDemo.dll",
+            "program": "${workspaceFolder}/GrpcDemoServer/bin/Debug/net5.0/GrpcDemoServer.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
