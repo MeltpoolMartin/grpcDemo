@@ -8,14 +8,23 @@
             "name": "Grpc Demo Server",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Build gRPC Server",
             "program": "${workspaceFolder}/GrpcDemoServer/bin/Debug/net5.0/GrpcDemoServer.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
+        },
+        {
+            "name": "Grpc Demo Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build gRPC Client",
+            "program": "${workspaceFolder}/GrpcDemoClient/bin/Debug/net5.0/GrpcDemoClient.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         }
-
-
     ]
 }

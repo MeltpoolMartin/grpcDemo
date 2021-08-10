@@ -4,14 +4,45 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Build",
+            "dependsOn": [
+                "Build gRPC Server",
+                "Build gRPC Client"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build gRPC Server",
             "command": "dotnet",
             "type": "shell",
             "args": [
                 "build",
-                // Ask dotnet build to generate full paths for file names.
+                "--configuration",
+                "Debug",
+                "GrpcDemoServer/GrpcDemoServer.csproj",
                 "/property:GenerateFullPaths=true",
-                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build gRPC Client",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--configuration",
+                "Debug",
+                "GrpcDemoClient/GrpcDemoClient.csproj",
+                "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "group": "build",
