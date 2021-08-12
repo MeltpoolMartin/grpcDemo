@@ -10,15 +10,18 @@ namespace GrpcDemoClient
     {
         static void Main(string[] args)
         {
+            // Workaround for development HTTPS
             // https://docs.microsoft.com/en-US/aspnet/core/grpc/troubleshoot?view=aspnetcore-5.0
-            var httpHandler = new HttpClientHandler();
-            // Return `true` to allow certificates that are untrusted/invalid
-            httpHandler.ServerCertificateCustomValidationCallback =
-                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+            // var httpHandler = new HttpClientHandler();
+            // // Return `true` to allow certificates that are untrusted/invalid
+            // httpHandler.ServerCertificateCustomValidationCallback =
+            //     HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress("https://localhost:5001",
-                new GrpcChannelOptions { HttpHandler = httpHandler });
+            // var channel = GrpcChannel.ForAddress("http://localhost:5000",
+            //     new GrpcChannelOptions { HttpHandler = httpHandler });
 
+            // Plain HTTP connection
+            var channel = GrpcChannel.ForAddress("http://localhost:5000");
 
             var client = new GreeterClient(channel);
 
