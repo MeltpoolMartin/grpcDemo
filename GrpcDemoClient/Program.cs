@@ -21,7 +21,7 @@ namespace GrpcDemoClient
             //     new GrpcChannelOptions { HttpHandler = httpHandler });
 
             // Plain HTTP connection
-            var channel = GrpcChannel.ForAddress("http://localhost:5000");
+            var channel = GrpcChannel.ForAddress("http://localhost:5005");
 
             var client = new GreeterClient(channel);
 
