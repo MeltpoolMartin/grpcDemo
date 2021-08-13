@@ -43,7 +43,7 @@ namespace GrpcDemo
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<RandomNumberService>();
 
                 endpoints.MapGet("/", async context =>
                 {

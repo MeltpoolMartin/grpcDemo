@@ -2,7 +2,7 @@
 using System.Net.Http;
 using Grpc.Net.Client;
 using GrpcDemo;
-using static GrpcDemo.Greeter;
+using static GrpcDemo.RandomNumber;
 
 namespace GrpcDemoClient
 {
@@ -23,11 +23,11 @@ namespace GrpcDemoClient
             // Plain HTTP connection
             var channel = GrpcChannel.ForAddress("http://localhost:5005");
 
-            var client = new GreeterClient(channel);
+            var client = new RandomNumberClient(channel);
 
-            var reply = client.SayHello(new HelloRequest { Name = "MeltpoolMartin" });
+            var reply = client.GetRandomInteger(new RandomIntegerRequest { LowerLimit = 0, UpperLimit = 10 });
 
-            Console.WriteLine("Greeting: " + reply.Message);
+            Console.WriteLine("Random number: " + reply.RandomInteger);
 
             Console.WriteLine("Press a key to exit");
             Console.ReadKey();

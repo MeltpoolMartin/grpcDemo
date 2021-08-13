@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcDemo";
+
+package random;
+
+// The random nunmber generator service definition.
+service RandomNumber {
+  // Sends a random number
+  rpc GetRandomInteger (RandomIntegerRequest) returns (RandomIntegerReply);
+}
+
+// The request message containing the user's name.
+message RandomIntegerRequest {
+  int32 lower_limit = 1;
+  int32 upper_limit = 2;
+}
+
+// The response message containing the greetings.
+message RandomIntegerReply {
+  int32 random_integer = 1;
+}

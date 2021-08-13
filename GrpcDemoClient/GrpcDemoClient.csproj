@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="../GrpcDemoServer/Protos/greet.proto" GrpcServices="Client">
+    <Protobuf Include="../GrpcDemoServer/Protos/random.proto" GrpcServices="Client">
     </Protobuf>
   </ItemGroup>
 
