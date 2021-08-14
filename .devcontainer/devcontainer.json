@@ -23,7 +23,9 @@
 		"ms-dotnettools.csharp",
 		"zxh404.vscode-proto3",
 		"streetsidesoftware.code-spell-checker",
-		"redhat.vscode-xml"
+		"redhat.vscode-xml",
+		"eamodio.gitlens",
+		"mhutchie.git-graph"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
