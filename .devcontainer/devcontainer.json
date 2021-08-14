@@ -25,7 +25,8 @@
 		"streetsidesoftware.code-spell-checker",
 		"redhat.vscode-xml",
 		"eamodio.gitlens",
-		"mhutchie.git-graph"
+		"mhutchie.git-graph",
+		"formulahendry.dotnet-test-explorer"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
