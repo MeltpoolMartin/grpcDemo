@@ -16,9 +16,8 @@ namespace GrpcDemo
             _random = new Random();
         }
 
-        public override Task<RandomIntegerReply> GetRandomInteger(RandomIntegerRequest request, ServerCallContext context)
+        private Task<RandomIntegerReply> GenerateRandomNumber(RandomIntegerRequest request)
         {
-            _logger.LogDebug($"Client {context.Host} requests method {context.Method}");
             if (request.LowerLimit > request.UpperLimit)
             {
                 _logger.LogWarning($"LowerLimit {request.LowerLimit} is greater as {request.UpperLimit}");
@@ -39,6 +38,22 @@ namespace GrpcDemo
             {
                 RandomInteger = _random.Next(request.LowerLimit, request.UpperLimit)
             });
+        }
+
+        public override Task<RandomIntegerReply> GetRandomInteger(RandomIntegerRequest request, ServerCallContext context)
+        {
+            _logger.LogDebug($"Client {context.Host} requests method {context.Method}");
+            return GenerateRandomNumber(request);
+        }
+
+        public override async Task GetRandomIntegerStream(RandomIntegerRequest request, IServerStreamWriter<RandomIntegerReply> responseStream, ServerCallContext context)
+        {
+            while (context.CancellationToken.IsCancellationRequested != true)
+            {
+                await responseStream.WriteAsync(GenerateRandomNumber(request).Result);
+                // Make delay configurable
+                await Task.Delay(100);
+            }
         }
     }
 }

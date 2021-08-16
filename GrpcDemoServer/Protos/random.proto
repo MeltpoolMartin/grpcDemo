@@ -8,6 +8,9 @@ package random;
 service RandomNumber {
   // Sends a random number
   rpc GetRandomInteger (RandomIntegerRequest) returns (RandomIntegerReply);
+
+  //Sends a stream of random numbers
+  rpc GetRandomIntegerStream (RandomIntegerRequest) returns (stream RandomIntegerReply);
 }
 
 // The request message containing the user's name.
