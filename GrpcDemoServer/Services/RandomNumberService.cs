@@ -50,7 +50,9 @@ namespace GrpcDemo
         {
             while (context.CancellationToken.IsCancellationRequested != true)
             {
-                await responseStream.WriteAsync(GenerateRandomNumber(request).Result);
+                var reply = GenerateRandomNumber(request).Result;
+                _logger.LogDebug($"Reply with {reply.RandomInteger}");
+                await responseStream.WriteAsync(reply);
                 // Make delay configurable
                 await Task.Delay(100);
             }
