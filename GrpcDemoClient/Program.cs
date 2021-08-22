@@ -24,7 +24,7 @@ namespace GrpcDemoClient
             var endpoint = new RandomNumberEndpoint("http://localhost:5005");
 
             // Console.WriteLine("Random number: " + endpoint.GetRandomInteger(0, 10));
-            endpoint.GetRandomIntegerStream(lowerLimit: 0, upperLimit: 10 , duration: 5);
+            endpoint.GetRandomIntegerStream(lowerLimit: 0, upperLimit: 10, duration: 5);
 
             Console.WriteLine("Press a key to exit");
             Console.ReadKey();

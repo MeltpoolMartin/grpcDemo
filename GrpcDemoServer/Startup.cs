@@ -27,7 +27,7 @@ namespace GrpcDemo
             // https://github.com/protobuf-net/protobuf-net.Grpc/issues/127
             services.Configure<KestrelServerOptions>(options =>
             {
-                options.ConfigureEndpointDefaults( lo => lo.Protocols = HttpProtocols.Http2);
+                options.ConfigureEndpointDefaults(lo => lo.Protocols = HttpProtocols.Http2);
             });
         }
 
