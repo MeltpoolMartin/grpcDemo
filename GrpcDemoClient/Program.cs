@@ -21,13 +21,10 @@ namespace GrpcDemoClient
             //     new GrpcChannelOptions { HttpHandler = httpHandler });
 
             // Plain HTTP connection
-            var channel = GrpcChannel.ForAddress("http://localhost:5005");
+            var endpoint = new RandomNumberEndpoint("http://localhost:5005");
 
-            var client = new RandomNumberClient(channel);
-
-            var reply = client.GetRandomInteger(new RandomIntegerRequest { LowerLimit = 0, UpperLimit = 10 });
-
-            Console.WriteLine("Random number: " + reply.RandomInteger);
+            // Console.WriteLine("Random number: " + endpoint.GetRandomInteger(0, 10));
+            endpoint.GetRandomIntegerStream(lowerLimit: 0, upperLimit: 10 , duration: 5);
 
             Console.WriteLine("Press a key to exit");
             Console.ReadKey();
