@@ -8,3 +8,10 @@ repos:
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: check-added-large-files
+-   repo: local
+    hooks:
+    -   id: dotnet-format
+        name: dotnet format
+        language: system
+        types_or: ['c#', 'vb']
+        entry: dotnet-format --include
