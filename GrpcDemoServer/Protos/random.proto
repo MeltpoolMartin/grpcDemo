@@ -13,13 +13,13 @@ service RandomNumber {
   rpc GetRandomIntegerStream (RandomIntegerRequest) returns (stream RandomIntegerReply);
 }
 
-// The request message containing the user's name.
+// The request message that defines the limits of random numbers
 message RandomIntegerRequest {
   int32 lower_limit = 1;
   int32 upper_limit = 2;
 }
 
-// The response message containing the greetings.
+// The response message containing the random number
 message RandomIntegerReply {
   int32 random_integer = 1;
 }
