@@ -37,7 +37,7 @@ namespace GrpcDemoClient
                 var tokenSource = new CancellationTokenSource();
                 try
                 {
-                    while (await responseStream.MoveNext(tokenSource.Token))
+                    await foreach (var reply in call.ResponseStream.ReadAllAsync(tokenSource.Token))
                     {
                         if (count < duration)
                         {
@@ -51,7 +51,6 @@ namespace GrpcDemoClient
                             tokenSource.Cancel();
                         }
                     }
-
                 }
                 catch (RpcException exec) when (exec.Status.StatusCode == StatusCode.Cancelled)
                 {
