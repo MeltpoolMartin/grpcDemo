@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using Grpc.Net.Client;
 using GrpcDemo;
 using static GrpcDemo.RandomNumber;
 
@@ -21,7 +20,7 @@ namespace GrpcDemoClient
             //     new GrpcChannelOptions { HttpHandler = httpHandler });
 
             // Plain HTTP connection
-            var endpoint = new RandomNumberEndpoint("http://localhost:5005");
+            var endpoint = new RandomNumberEndpoint("127.0.0.1:5005");
 
             // Console.WriteLine("Random number: " + endpoint.GetRandomInteger(0, 10));
             endpoint.GetRandomIntegerStream(lowerLimit: 0, upperLimit: 10, duration: 5);

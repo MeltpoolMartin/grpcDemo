@@ -1,18 +1,17 @@
 using System.Threading;
 using Grpc.Core;
-using Grpc.Net.Client;
 using GrpcDemo;
-using static GrpcDemo.RandomNumber;
+using System.Threading.Tasks;
 
 namespace GrpcDemoClient
 {
     public class RandomNumberEndpoint
     {
-        readonly RandomNumberClient _client;
+        readonly RandomNumber.RandomNumberClient _client;
         public RandomNumberEndpoint(string ipAddress)
         {
-            var channel = GrpcChannel.ForAddress(ipAddress);
-            _client = new RandomNumberClient(channel);
+            var channel = new Channel(ipAddress, ChannelCredentials.Insecure);
+            _client = new RandomNumber.RandomNumberClient(channel);
         }
 
         public int GetRandomInteger(int lowerLimit, int upperLimit)
@@ -37,7 +36,7 @@ namespace GrpcDemoClient
                 var tokenSource = new CancellationTokenSource();
                 try
                 {
-                    await foreach (var reply in call.ResponseStream.ReadAllAsync(tokenSource.Token))
+                    while (await responseStream.MoveNext(tokenSource.Token))
                     {
                         if (count < duration)
                         {
